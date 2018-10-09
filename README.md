@@ -18,6 +18,6 @@ Then modify the PATH environment variable to point to the cloned repo:
 
 ```sh
 git clone --depth=1 https://github.com/lzutao/r2-magic-run.git
-PATH="${PATH}:$(realpath r2-magic-run)"
+PATH="${PATH}:$(realpath r2-magic-run/bin)"
 export PATH
 ```
