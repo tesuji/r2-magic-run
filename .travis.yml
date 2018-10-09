@@ -1,0 +1,12 @@
+language: c
+git:
+  depth: 1
+  submodules: false
+install:
+  - mkdir -p "${HOME}/builddir/radare2"
+  - wget -O 'radare2.deb' 'http://radare.mikelloc.com/get/2.9.0/radare2_2.9.0_amd64.deb'
+  - dpkg -x 'radare2.deb' "${HOME}/builddir/radare2"
+script:
+  - ./bin/rasm2 -v
+  - ./bin/rasm2 -a x86 -b 32 'xor eax, eax'
+  - ./bin/r2 -L

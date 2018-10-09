@@ -2,6 +2,11 @@
 
 This script is used to run radare2 from non-standard installed directory.
 
+**Status**: [![Build Status][build_status]][travis_repo]
+
+[build_status]: https://travis-ci.com/lzutao/r2-magic-run.svg?branch=master
+[travis_repo]: https://travis-ci.com/lzutao/r2-magic-run
+
 ## Usage
 
 In specific, first extract the radare2 package by:
