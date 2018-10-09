@@ -13,3 +13,11 @@ dpkg -x 'radare2.deb' "${HOME}/builddir/radare2"
 
 In your case, you need to modify the extracted directory and R2_PREFIX
 in [r2](r2) file corresponding.
+
+Then modify the PATH environment variable to point to the cloned repo:
+
+```sh
+git clone --depth=1 https://github.com/lzutao/r2-magic-run.git
+PATH="${PATH}:$(realpath r2-magic-run)"
+export PATH
+```
