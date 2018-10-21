@@ -6,13 +6,20 @@
 #       % wget -O 'radare2.deb' 'http://radare.mikelloc.com/get/2.9.0/radare2_2.9.0_amd64.deb'
 #       % dpkg -x 'radare2.deb' "${HOME}/builddir/radare2"
 #
+#  or using
+#       % cd radare2
+#       % ./sys/build.sh /path/to/your/buildds/radare2/usr
+#       % make install
+#       # strip the binary
+#
 # In your case, you need to modify the extracted directory and R2_PREFIX
 # below correctly.
 BIN_NAME="$(basename "$0")"
 R2_PREFIX="${HOME}/builddir/radare2/usr"
-R2_MAGICPATH="${R2_PREFIX}/share/radare2/2.9.0/magic"
+R2_VERION=3.0.1
+R2_MAGICPATH="${R2_PREFIX}/share/radare2/${R2_VERION}/magic"
 LD_LIBRARY_PATH="${R2_PREFIX}/lib/"
-BIN_PATH="${R2_PREFIX}/bin/${BIN_NAME}"
+BIN_FILE="${R2_PREFIX}/bin/${BIN_NAME}"
 
 export R2_MAGICPATH LD_LIBRARY_PATH
-exec "${BIN_PATH}" "$@"
+exec "${BIN_FILE}" "$@"
