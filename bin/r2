@@ -16,8 +16,7 @@
 # below correctly.
 BIN_NAME="$(basename "$0")"
 R2_PREFIX="${HOME}/builddir/radare2/usr"
-R2_VERION=3.0.1
-R2_MAGICPATH="${R2_PREFIX}/share/radare2/${R2_VERION}/magic"
+R2_MAGICPATH="${R2_PREFIX}/share/radare2/last/magic"
 LD_LIBRARY_PATH="${R2_PREFIX}/lib/"
 BIN_FILE="${R2_PREFIX}/bin/${BIN_NAME}"
 
