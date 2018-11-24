@@ -6,19 +6,26 @@
 #       % r2 -V
 
 if [ "$#" -lt 1 ]; then
-  printf "usage: env.sh /prefix/to/radare2 <debug: on or off>\n" >&2
+  cat << EOF >&2
+usage: . env.sh /prefix/to/radare2 <debug: on/off>
+example:
+    . env /opt/radare2/git
+EOF
   return 1
 fi
 
-R2_PREFIX="${1}"  # maybe /opt/radare2/git
-R2_MAGICPATH="${R2_PREFIX}/share/radare2/last/magic"
-LD_LIBRARY_PATH="${R2_PREFIX}/lib"
-PATH="${R2_PREFIX}/bin/:${PATH}"
+R2_PREFIX="${1}"
+R2_SHARE_RADARE2="${R2_PREFIX}/share/radare2"
+R2_GIT_MAGICPATH="$(find "${R2_SHARE_RADARE2}" -maxdepth 1 -path '*-git')"
+R2_MAGICPATH="${R2_SHARE_RADARE2}/last/magic:${R2_GIT_MAGICPATH}"
 
-export R2_MAGICPATH LD_LIBRARY_PATH
+LD_LIBRARY_PATH="${R2_PREFIX}/lib:${R2_PREFIX}/lib/x86_64-linux-gnu"
+PATH="${R2_PREFIX}/bin:${PATH}"
 
 if [ "${2}" = "on" ]; then
   CFLAGS="-I ${R2_PREFIX}/include/libr ${CFLAGS}"
   LDFLAGS="-L ${LD_LIBRARY_PATH} ${PATH}"
   export CFLAGS LDFLAGS
 fi
+
+export R2_MAGICPATH LD_LIBRARY_PATH
