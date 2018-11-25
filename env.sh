@@ -19,6 +19,7 @@ R2_SHARE_RADARE2="${R2_PREFIX}/share/radare2"
 R2_GIT_MAGICPATH="$(find "${R2_SHARE_RADARE2}" -maxdepth 1 -path '*-git' | tail -n 1)"
 R2_MAGICPATH="${R2_SHARE_RADARE2}/last/magic:${R2_GIT_MAGICPATH}"
 
+MANPATH="${R2_PREFIX}/share/man"
 LD_LIBRARY_PATH="${R2_PREFIX}/lib:${R2_PREFIX}/lib/x86_64-linux-gnu"
 PATH="${R2_PREFIX}/bin:${PATH}"
 
@@ -28,4 +29,4 @@ if [ "${2}" = "on" ]; then
   export CFLAGS LDFLAGS
 fi
 
-export R2_MAGICPATH LD_LIBRARY_PATH
+export R2_MAGICPATH LD_LIBRARY_PATH MANPATH
