@@ -16,7 +16,7 @@ fi
 
 R2_PREFIX="${1}"
 R2_SHARE_RADARE2="${R2_PREFIX}/share/radare2"
-R2_GIT_MAGICPATH="$(find "${R2_SHARE_RADARE2}" -maxdepth 1 -path '*-git')"
+R2_GIT_MAGICPATH="$(find "${R2_SHARE_RADARE2}" -maxdepth 1 -path '*-git' | tail -n 1)"
 R2_MAGICPATH="${R2_SHARE_RADARE2}/last/magic:${R2_GIT_MAGICPATH}"
 
 LD_LIBRARY_PATH="${R2_PREFIX}/lib:${R2_PREFIX}/lib/x86_64-linux-gnu"
